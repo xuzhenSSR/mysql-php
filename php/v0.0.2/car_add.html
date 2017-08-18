@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>添加汽车信息</title>
+<meta charset="utf-8" />
+</head>
+<body>
+  <h1>添加汽车信息</h1>
+  <form action="car_add.php" method="post" id="f3">
+    汽车名<input type="text" value="" name="cname" id="cname"/>
+    <br>
+    图片<input type="text" value="" name="cpic" id="cpic"/> <br>
+    购买数量<input type="text" value="" name="buycount" id="buycount"/> <br>
+    <input type="submit" value="添加">
+  </form>
+  <script>
+     var f3 = document.getElementById("f3");
+     f3.onsubmit = function(){
+        //1:创建三个正则表达式
+        var nameReg = /^[\u4e00-\u9fa50-9a-z]{1,15}$/i;
+        var picReg = /^[0-9a-z\.]{5,15}$/;
+        var buyReg = /^[0-9]{1,10}$/;
+        //2:获取三个元素分别验证
+        if(!nameReg.test(cname.value)){
+          alert("汽车名称格式不正确");
+          return false;
+        }
+        if(!picReg.test(cpic.value)){
+          alert("图片格式不正确");
+          return false;
+        }
+        if(!buyReg.test(buycount.value)){
+          alert("购买数量格式不正确");
+          return false;
+        }
+        //验证全正确
+        return true;
+     }
+  </script>
+</body>
+</html>

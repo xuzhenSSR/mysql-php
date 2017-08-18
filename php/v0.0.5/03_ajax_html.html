@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>AJAX接收html</title>
+<meta charset="utf-8" />
+</head>
+<body>
+   <h1>AJAX接收html</h1>
+   <ul id="menu">
+   </ul>
+   <script>
+      //11:47--11:52
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function(){
+         if(xhr.readyState===4){
+            if(xhr.status===200){
+               menu.innerHTML = 
+               xhr.responseText;
+            }
+         }
+      }
+      xhr.open("GET","03_ajax_html.php",true);
+      xhr.send(null);
+   </script> 
+
+
+
+
+</body>
+</html>

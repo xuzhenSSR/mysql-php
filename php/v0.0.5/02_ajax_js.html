@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>AJAX接收纯文本</title>
+<meta charset="utf-8" />
+</head>
+<body>
+   <h1>AJAX接收js eval()</h1>
+   <script>
+    //10:50--10:55
+    //1:创建对象
+    var xhr = new XMLHttpRequest();
+    //2:绑定事件  11:30--11:35
+    xhr.onreadystatechange = function(){
+       if(xhr.readyState===4){
+         if(xhr.status===200){
+           eval(xhr.responseText);
+         }
+       }
+    }
+    //3:打开连接
+    xhr.open("GET","02_ajax_js.php",true);
+    //4:发送
+    xhr.send(null);
+   </script> 
+</body>
+</html>

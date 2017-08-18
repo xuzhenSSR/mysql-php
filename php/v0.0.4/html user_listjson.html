@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>用户列表留言</title>
+<meta charset="utf-8" />
+</head>
+<body>
+  <table border="1" width="80%">
+    <thead>
+      <tr>
+       <td>用户编号</td>
+       <td>用户名称</td>
+       <td>操作</td>
+      </tr>
+    </thead>
+    <tbody id="tb1">
+    </tbody>
+    </table>
+    <script>
+       //页面加载成功后发送AJAX请求获取数据
+       //JSON
+       //1:创建对象
+       var xhr = new XMLHttpRequest();
+       //2:绑定事件
+       xhr.onreadystatechange = function(){
+          if(xhr.readyState===4){
+              if(xhr.status===200){
+               //1:接收服务器输出jsonstring
+               var str = xhr.responseText;
+               //2:将json js obj
+               var data = JSON.parse(str);
+               //3:拼接字符串
+               var html = "";
+               for(var i=0;i<data.length;i++){
+                  var obj = data[i];
+                  html +=`
+                    <tr> 
+                     <td>${obj.uid}</td>
+                     <td>${obj.uname}</td>
+                     <td>
+                       <a href="${obj.uid}" class="btn-del">删除</a>
+                     </td>
+                    </tr>
+                  `;
+               }
+               tb1.innerHTML = html;
+             }
+          }
+       }
+       //3:打开连接
+       xhr.open("GET","user_listjson.php",true);
+       //4:发送请求 
+       xhr.send(null);
+
+
+
+       //Uncaught SyntaxError: 
+       //Unexpected token 　 in JSON at
+       ///position 124
+       //原因:JSON.parse(str);
+       //php:输出不是JSON字符串
+       //空格 回车 换行 echo $sql;
+
+
+       //14:55--15:05
+       //1: user_del.php
+       //2: js 
+       //1:获取父元素绑定点击事件
+       tb1.onclick = function(e){
+        //2:阻止事件默认行为
+        e.preventDefault();
+        //3:判断当前元素是否a
+        var target = e.target;
+        if(target.className==="btn-del"){
+         //4:获取用户uid
+         var uid = target.getAttribute("href");
+         //5:发送AJAX请求{4步}
+         var xhr = new XMLHttpRequest();
+         xhr.onreadystatechange = function(){
+             if(xhr.readyState===4){
+                if(xhr.status===200){
+                 var html = xhr.responseText; var obj = JSON.parse(html);  
+                 if(obj.code>0){
+      var tr = target.parentNode.parentNode;
+      tb1.removeChild(tr);
+                 } 
+                }
+             }
+         }//15:45---15:55
+         xhr.open("GET","user_del.php?uid="+uid,true);
+         xhr.send(null);
+        }
+       }
+    </script>
+</body>
+</html>

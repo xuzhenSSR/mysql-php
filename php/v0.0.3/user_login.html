@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>用户注册</title>
+<meta charset="utf-8" />
+</head>
+<body>
+  <h1>ajax (登录)</h1>
+  <h1 id="msgTip"></h1>
+  <form action="#">
+    用户名 <input type="text" id="uname"> <br>
+    密码<input type="text" id="upwd"> <br>
+    <input type="button" id="btn" value="登录"> <br>
+  </form>
+  <script>
+    //1:获取按钮元素为其绑定点击事件
+    //console.log(0);
+    btn.onclick = function(){
+     //console.log(1);
+     //2:获取用户名和密码
+     var u = uname.value;
+     var p = upwd.value;
+     //3:创建xhr对象
+     //console.log(2+":"+u+":"+p);
+     var xhr = new XMLHttpRequest();
+     //4:绑定状态改变事件
+     //console.log(3);
+     xhr.onreadystatechange = function(){
+       //console.log(4);
+       if(xhr.readyState===4){
+         //console.log(7);
+         msgTip.innerHTML = xhr.responseText;
+       }
+     }
+     //5:打开连接
+     xhr.open("GET",`user_login.php?uname=${u}&upwd=${p}`,true);
+     //console.log(5);
+     //6:发送请求
+     xhr.send(null);
+     //console.log(6);
+    }
+  </script>
+</body>
+</html>

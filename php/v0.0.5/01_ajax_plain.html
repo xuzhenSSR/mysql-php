@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>AJAX接收纯文本</title>
+<meta charset="utf-8" />
+</head>
+<body>
+   <h1>AJAX接收纯文本</h1>
+   <script>
+    //10:50--10:55
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState===4){
+        if(xhr.status===200){
+          alert(xhr.responseText);
+        }
+      }
+    }
+    xhr.open("GET","01_ajax_plain.php",true);
+    xhr.send(null);
+   </script> 
+</body>
+</html>

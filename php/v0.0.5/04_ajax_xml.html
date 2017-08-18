@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>AJAX接收html</title>
+<meta charset="utf-8" />
+</head>
+<body>
+   <h1>AJAX接收 xml</h1>
+   <ul id="menu">
+   </ul>
+   <script>
+    //1:创建对象 XHR
+    //console.log(1);
+    var xhr = new XMLHttpRequest();
+        //console.log(2);
+    //2:绑定事件
+    xhr.onreadystatechange = function(){
+      //console.log(3);
+      if(xhr.readyState===4){
+         if(xhr.status===200){
+           //console.log(4);
+            var doc = xhr.responseXML; 
+            //1:获取所有book元素
+            var  books = doc.querySelectorAll("book");
+            //2:拼接字符串14:24--14:29
+            var html = "";
+            for(var i=0;i<books.length;i++){
+              var obj = books[i];
+              var o = obj.innerHTML;
+              html += `
+                <li>${o}</li>
+              `;
+            }
+            menu.innerHTML = html;
+         }
+      }
+    }//end onready
+
+    //2.1:判断 4 200
+    //3:打开连接
+    //console.log(5);
+    //xhr.open("GET","04_ajax_xml.php",true);
+    xhr.open("POST","04_ajax_xml.php",true);
+    xhr.setRequestHeader("Content-Type",
+    "application/x-www-form-urlencoded");
+    //4:发送 
+    //console.log(6);
+    //xhr.send(null);
+    xhr.send(`uname=tom`);
+    //console.log(7);
+   </script> 
+</body>
+</html>

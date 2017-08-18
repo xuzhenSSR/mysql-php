@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>用户注册</title>
+<meta charset="utf-8" />
+</head>
+<body>
+  <h1>ajax (注册)</h1>
+  <form action="#" method="post">
+    用户名<input type="text" value="" name="uname" id="uname"/>
+    <span id="unameTip"></span>
+    <br>
+    密码<input type="text" value="" name="upwd" id="upwd"/> <br>
+    <input type="button" id="btn" value="添加">
+  </form>
+  <script>
+     console.log(0);
+     //1:获取用户名绑定事件 onblur
+     uname.onblur = function(){
+     console.log(1);
+     //2:获取当前用户名
+     var u = this.value;
+     console.log(2+":"+u);
+     //3:创建AJAX对象
+     var xhr = new XMLHttpRequest();
+     console.log(3);
+     //4:绑定事件
+     xhr.onreadystatechange = function(){
+       console.log(10);
+       //4.1:接收返回数据 
+       if(xhr.readyState===4){
+         var txt = xhr.responseText;
+         unameTip.innerHTML = txt;
+         if(txt==="欢迎使用"){
+          unameTip.style.color="green";
+         }else{
+          unameTip.style.color="red";
+         }
+         console.log(11);
+       }
+     }
+     console.log(4);
+     //5:打开连接
+     xhr.open("GET",
+     "check_uname.php?uname="+u,
+     true);
+     console.log(5);
+     //6:发送请求
+     xhr.send(null);
+     console.log(6);
+     }
+  </script>
+</body>
+</html>
