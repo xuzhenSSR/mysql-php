@@ -1,4 +1,4 @@
-﻿PHP数据库
+PHP数据库
 =
 * ## v0.0.1 (sync)
 1. 留言板msg 添加 查询 删除 html-php-sql
@@ -10,11 +10,13 @@
 4. 用户      页面加载拿数据 删除 html-php
 * ## v0.0.5 (async)
 5. 分析各种数据响应解析模式(plain xml js html) 
+* ## v0.0.6 (jasync)
+4. jd     
 * ## v0.0.5 (async)
-4. 用户      页面加载拿数据 删除 html-php
+4. null
 * ## v0.0.5 (async)
-4. 用户      页面加载拿数据 删除 html-php
-* ## v0.0.5 (async)
-4. 用户      页面加载拿数据 删除 html-php
+4. null
 * ## v0.0.5 (async)
 
+end
+=======
