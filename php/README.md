@@ -8,7 +8,7 @@ PHP MySql
 3. 搜狐      用户注册 登录 html-php-sql
 * ## v0.0.4 (async)
 4. 用户      页面加载拿数据 删除 html-php
-* ## v0.0.5 (async)
+* ## v0.0.5 (sync)
 5. 分析各种数据响应解析模式(plain xml js html) 
 * ## v0.0.6 (jasync)
 4. jd     
