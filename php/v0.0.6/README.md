@@ -1,6 +1,6 @@
 JD项目
 ====
-## data-php文件存放
+## data目录php文件存放
 * ### index.js
  1. 用户登录 jd_login.php
  2. 跳页功能 productlist.php
