@@ -1,4 +1,4 @@
-PHP数据库
+PHP MySql
 =
 * ## v0.0.1 (sync)
 1. 留言板msg 添加 查询 删除 html-php-sql
